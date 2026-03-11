@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercise 1 – Giphy Random GIF</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #1a1a2e;
+      color: #eee;
+    }
+    h1 { margin-bottom: 1rem; color: #e94560; }
+    #gif-container img {
+      max-width: 480px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(233,69,96,0.4);
+    }
+    #error { color: #ff6b6b; font-size: 1.1rem; }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.6rem;
+      background: #e94560;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: #c73652; }
+  </style>
+</head>
+<body>
+  <h1>🎬 Random GIF Fetcher</h1>
+  <div id="gif-container"></div>
+  <div id="error"></div>
+  <button onclick="fetchGif()">Get Another GIF</button>
+
+  <script>
+    
+    const API_KEY = "YOUR_GIPHY_API_KEY";
+    const URL = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&rating=g`;
+
+    async function fetchGif() {
+      const container = document.getElementById("gif-container");
+      const errorDiv  = document.getElementById("error");
+      container.innerHTML = "Loading…";
+      errorDiv.textContent = "";
+
+      try {
+        const response = await fetch(URL);
+
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error – status: ${response.status}`);
+        }
+
+        const { data } = await response.json();
+
+        
+        const gifUrl = data.images.original.url;
+
+        const img = document.createElement("img");
+        img.src   = gifUrl;
+        img.alt   = data.title || "Random GIF";
+
+        container.innerHTML = "";
+        container.appendChild(img);
+
+      } catch (err) {
+        container.innerHTML = "";
+        errorDiv.textContent = `oooooooops – ${err.message}`;
+        console.error("oooooooops", err);
+      }
+    }
+
+    fetchGif(); 
+  </script>
+</body>
+</html>

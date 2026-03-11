@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emoji Guessing Game 🎮</title>
+</head>
+<body>
+
+<h1>🎯 Emoji Guessing Game</h1>
+
+<input type="text" id="username" placeholder="Enter your name" />
+<button onclick="startGame()">Start Game</button>
+
+<h2 id="emoji"></h2>
+<form id="optionsForm"></form>
+
+<p id="feedback"></p>
+<p>Score: <span id="score">0</span></p>
+
+<button onclick="saveScore()">Save Score</button>
+
+<h2>🏆 Leaderboard</h2>
+<ul id="leaderboard"></ul>
+
+<script>
+let currentCorrectAnswer = "";
+let score = 0;
+let username = "";
+
+function startGame() {
+    username = document.getElementById("username").value;
+    score = 0;
+    document.getElementById("score").innerText = score;
+    loadQuestion();
+}
+
+async function loadQuestion() {
+    const res = await fetch("/api/question");
+    const data = await res.json();
+
+    currentCorrectAnswer = data.correctAnswer;
+    document.getElementById("emoji").innerText = data.emoji;
+
+    const form = document.getElementById("optionsForm");
+    form.innerHTML = "";
+
+    data.options.forEach(option => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.innerText = option;
+        button.onclick = () => submitGuess(option);
+        form.appendChild(button);
+    });
+}
+
+async function submitGuess(guess) {
+    const res = await fetch("/api/guess", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            guess,
+            correctAnswer: currentCorrectAnswer,
+            score,
+            username
+        })
+    });
+
+    const data = await res.json();
+
+    score = data.newScore;
+    document.getElementById("score").innerText = score;
+
+    document.getElementById("feedback").innerText =
+        data.correct ? "✅ Correct!" : "❌ Wrong!";
+
+    setTimeout(loadQuestion, 1000);
+}
+
+async function saveScore() {
+    await fetch("/api/leaderboard", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, score })
+    });
+
+    loadLeaderboard();
+}
+
+async function loadLeaderboard() {
+    const res = await fetch("/api/leaderboard");
+    const data = await res.json();
+
+    const list = document.getElementById("leaderboard");
+    list.innerHTML = "";
+
+    data.forEach(player => {
+        const li = document.createElement("li");
+        li.innerText = `${player.username}: ${player.score}`;
+        list.appendChild(li);
+    });
+}
+
+loadLeaderboard();
+</script>
+
+</body>
+</html>

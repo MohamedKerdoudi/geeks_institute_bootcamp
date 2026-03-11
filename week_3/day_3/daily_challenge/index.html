@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="card">
+    <h1>Currency Converter</h1>
+
+    <div class="row">
+      <div>
+        <label for="from">From</label>
+        <select id="from" aria-label="From currency"></select>
+      </div>
+      <button class="switch" id="switchBtn" title="Swap currencies">⇄</button>
+      <div>
+        <label for="to">To</label>
+        <select id="to" aria-label="To currency"></select>
+      </div>
+    </div>
+
+    <label for="amount">Amount</label>
+    <input id="amount" type="number" min="0" step="any" placeholder="Enter amount" value="1" />
+
+    <div class="actions">
+      <button class="btn" id="convertBtn">Convert</button>
+      <button class="btn secondary" id="clearBtn">Clear</button>
+    </div>
+
+    <div id="result" class="result muted">Choose currencies and amount, then press Convert.</div>
+    <div id="error" class="error" hidden></div>
+
+    <p class="muted credit">Rates by ExchangeRate‑API • Cached for demo purposes</p>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: #3a9df4;
+  color: white;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: white;
+  color: #3a9df4;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.controls {
+  margin-bottom: 20px;
+}
+
+#restart {
+  display: none;
+  padding: 10px 20px;
+}

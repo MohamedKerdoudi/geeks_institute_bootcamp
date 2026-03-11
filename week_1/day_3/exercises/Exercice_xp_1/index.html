@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1</title>
+    <style>
+        .fade {
+            transition: opacity 1s ease;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<article>
+    <h1>Some Facts</h1>
+    <h2>The Chocolate</h2>
+    <h3>History of the chocolate</h3>
+    <p>Chocolate is made from tropical Theobroma cacao tree seeds. Its earliest use dates back to the Olmec civilization in Mesoamerica.</p>
+    <p>After the European discovery of the Americas, chocolate became very popular in the wider world, and its demand exploded.</p>
+    <p>Chocolate has since become a popular food product that millions enjoy every day, thanks to its unique, rich, and sweet taste.</p> 
+    <p>But what effect does eating chocolate have on our health?</p> 
+</article>
+
+<button id="boldBtn">Make paragraphs bold</button>
+
+<script>
+    // Retrieve h1 using DOM property
+    const h1 = document.querySelector('h1');
+    console.log(h1);
+
+    // Remove last paragraph
+    const article = document.querySelector('article');
+    const paragraphs = article.querySelectorAll('p');
+    article.removeChild(paragraphs[paragraphs.length - 1]);
+
+    // Event listener: change h2 background to red
+    const h2 = document.querySelector('h2');
+    h2.addEventListener('click', () => {
+        h2.style.backgroundColor = 'red';
+    });
+
+    // Event listener: hide h3 on click
+    const h3 = document.querySelector('h3');
+    h3.addEventListener('click', () => {
+        h3.style.display = 'none';
+    });
+
+    // Button to make paragraphs bold
+    const boldBtn = document.getElementById('boldBtn');
+    boldBtn.addEventListener('click', () => {
+        paragraphs.forEach(p => p.style.fontWeight = 'bold');
+    });
+
+    // BONUS: random font size on h1 hover
+    h1.addEventListener('mouseover', () => {
+        const size = Math.floor(Math.random() * 101); // 0 to 100
+        h1.style.fontSize = size + 'px';
+    });
+
+    // BONUS: fade out 2nd paragraph on hover
+    const secondP = paragraphs[1];
+    secondP.classList.add('fade');
+    secondP.addEventListener('mouseover', () => {
+        secondP.style.opacity = 0;
+    });
+    secondP.addEventListener('mouseout', () => {
+        secondP.style.opacity = 1;
+    });
+</script>
+</body>
+</html>

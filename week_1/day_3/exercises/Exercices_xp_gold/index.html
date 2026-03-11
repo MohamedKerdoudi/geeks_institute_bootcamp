@@ -1,0 +1,19 @@
+<select id="genres">
+  <option value="rock">Rock</option>
+  <option value="blues" selected>Blues</option>
+</select>
+
+<script>
+  const genres = document.getElementById('genres');
+
+  console.log("Selected genre:", genres.value);
+
+  const newOption = document.createElement('option');
+  newOption.value = 'classic';
+  newOption.textContent = 'Classic';
+  newOption.selected = true;
+
+  genres.appendChild(newOption);
+
+  console.log("New selected genre:", genres.value);
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Giphy Search</title>
+</head>
+<body>
+
+<form id="gifForm">
+    <input type="text" id="searchInput" placeholder="Search GIF">
+    <button type="submit">Find</button>
+</form>
+
+<button id="deleteBtn">Delete All</button>
+
+<div id="gifContainer"></div>
+
+<script src="script.js">
+    const form = document.getElementById("gifForm");
+const input = document.getElementById("searchInput");
+const container = document.getElementById("gifContainer");
+const deleteBtn = document.getElementById("deleteBtn");
+
+const API_KEY = "YOUR_API_KEY";
+
+form.addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    const category = input.value;
+
+    try {
+
+        const response = await fetch(
+            `https://api.giphy.com/v1/gifs/search?q=${category}&rating=g&api_key=${API_KEY}&limit=10`
+        );
+
+        if(!response.ok){
+            throw new Error("Problem fetching GIFs");
+        }
+
+        const data = await response.json();
+
+        data.data.forEach(gif => {
+
+            const img = document.createElement("img");
+            img.src = gif.images.original.url;
+
+            container.appendChild(img);
+
+        });
+
+    } catch(error){
+        console.log("Error:", error);
+    }
+});
+
+deleteBtn.addEventListener("click", function(){
+    container.innerHTML = "";
+});
+</script>
+</body>
+</html>

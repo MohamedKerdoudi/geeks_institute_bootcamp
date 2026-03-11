@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 2: Move the Box</title>
+    <style>
+        #container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background: yellow;
+        }
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: red;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <p><button onclick="myMove()">Click Me</button></p>
+    <div id="container">
+        <div id="animate"></div>
+    </div>
+
+    <script>
+        function myMove() {
+            const elem = document.getElementById("animate");
+            const container = document.getElementById("container");
+            let pos = 0;
+
+            const maxRight = container.offsetWidth - elem.offsetWidth;
+
+            const id = setInterval(frame, 1);
+
+            function frame() {
+                if (pos >= maxRight) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    elem.style.left = pos + "px";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
