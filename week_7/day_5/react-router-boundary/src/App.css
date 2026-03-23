@@ -1,0 +1,16 @@
+.example-section {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+.example-section h3 {
+  margin-top: 0;
+}
+.experience-card {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  background: #fff;
+}

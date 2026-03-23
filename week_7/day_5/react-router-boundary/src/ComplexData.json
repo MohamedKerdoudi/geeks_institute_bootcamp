@@ -1,0 +1,36 @@
+{
+  "SocialMedias": [
+    { "id": 1, "name": "Facebook", "url": "https://facebook.com" },
+    { "id": 2, "name": "Twitter", "url": "https://twitter.com" },
+    { "id": 3, "name": "LinkedIn", "url": "https://linkedin.com" }
+  ],
+  "Skills": [
+    { "id": 1, "skill": "JavaScript", "level": "Advanced" },
+    { "id": 2, "skill": "React", "level": "Intermediate" },
+    { "id": 3, "skill": "Node.js", "level": "Intermediate" }
+  ],
+  "Experiences": [
+    {
+      "id": 1,
+      "company": "Acme Corp",
+      "role": "Frontend Engineer",
+      "period": "2019‑2021",
+      "responsibilities": [
+        "Built reusable React components",
+        "Implemented Redux state management",
+        "Optimized bundle size"
+      ]
+    },
+    {
+      "id": 2,
+      "company": "Beta Ltd",
+      "role": "Full‑Stack Developer",
+      "period": "2021‑Present",
+      "responsibilities": [
+        "Designed REST APIs with Express",
+        "Created CI/CD pipelines",
+        "Mentored junior developers"
+      ]
+    }
+  ]
+}

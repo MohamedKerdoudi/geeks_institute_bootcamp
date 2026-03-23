@@ -1,0 +1,14 @@
+.post-list {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+.post-card {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.post-card h3 {
+  margin-top: 0;
+}
