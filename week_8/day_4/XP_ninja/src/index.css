@@ -1,0 +1,46 @@
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f0f2f5;
+}
+
+.card {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 500px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #eaeaea;
+}
+.task-item:last-child {
+  border-bottom: none;
+}
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #777;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 1.1rem;
+}
+.btn:hover {
+  opacity: 0.7;
+}
+.btn-delete {
+  color: #d9534f;
+}
+.btn-toggle {
+  color: #5cb85c;
+}

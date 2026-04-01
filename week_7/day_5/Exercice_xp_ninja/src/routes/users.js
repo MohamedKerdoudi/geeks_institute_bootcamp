@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
+import { Router } from 'express';
+var router = Router();
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res, ) {
 
   res.json([
     { id: 1, username: "somebody" },
@@ -10,4 +10,4 @@ router.get('/', function(req, res, next) {
 
 });
 
-module.exports = router;
+export default router;

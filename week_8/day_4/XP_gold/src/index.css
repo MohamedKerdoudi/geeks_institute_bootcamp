@@ -1,0 +1,66 @@
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #212529;
+  --card-bg: #f8f9fa;
+  --border-color: #ced4da;
+}
+
+
+[data-theme="dark"] {
+  --bg-color: #212529;
+  --text-color: #f8f9fa;
+  --card-bg: #343a40;
+  --border-color: #495057;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 500px;
+}
+
+.btn-toggle {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-toggle:hover {
+  background: #1565c0;
+}
+
+.char-input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.counter {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
