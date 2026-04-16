@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.5s ease;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote-box {
+  background: #d3d3d3;
+  width: 600px;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.quote {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.author {
+  text-align: right;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  padding: 10px 18px;
+  border-radius: 5px;
+  border: 2px solid #222;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  background-color: #444;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.85;
+}
